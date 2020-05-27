@@ -90,4 +90,5 @@ declare class Router extends Component<RouterProps> {
     render(): JSX.Element;
 }
 export default Router;
+export * from 'mobx-history-api';
 export { history, RouterContext, RouterProps, RouterTypes, getMatchReg };

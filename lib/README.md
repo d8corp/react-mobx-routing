@@ -2,7 +2,10 @@
 [![NPM](https://img.shields.io/npm/v/react-mobx-routing.svg)](https://www.npmjs.com/package/react-mobx-routing)
 ![downloads](https://img.shields.io/npm/dm/react-mobx-routing.svg)
 ![license](https://img.shields.io/npm/l/react-mobx-routing)  
-Use `Router` anywhere to show content by URL matching. 
+Use `Router` anywhere to show content by URL matching.  
+ 
+[React](https://reactjs.org/) v16.3+  
+[Mobx](https://mobx.js.org/) v3+
 ### Installation
 npm
 ```bash
