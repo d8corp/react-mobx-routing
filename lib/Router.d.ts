@@ -41,7 +41,7 @@ declare const RouterTypes: {
     onHidden: PropTypes.Requireable<(...args: any[]) => any>;
     children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
 };
-export declare function getMatchReg(props: RouterProps): string;
+declare function getMatchReg(props: RouterProps): string;
 declare class Router extends Component<RouterProps> {
     static propTypes: {
         match: PropTypes.Requireable<string>;
@@ -90,4 +90,4 @@ declare class Router extends Component<RouterProps> {
     render(): JSX.Element;
 }
 export default Router;
-export { history, RouterContext, RouterProps, RouterTypes };
+export { history, RouterContext, RouterProps, RouterTypes, getMatchReg };
