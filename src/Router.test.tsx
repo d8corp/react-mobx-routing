@@ -1,4 +1,5 @@
 import ReactDom from 'react-dom'
+// @ts-ignore
 import React, {ReactElement} from 'react'
 import Router, {history} from '.'
 
