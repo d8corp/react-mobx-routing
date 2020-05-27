@@ -50,7 +50,7 @@ const RouterTypes = {
   ])
 }
 
-export function getMatchReg (props: RouterProps) {
+function getMatchReg (props: RouterProps) {
   const {match} = props
   if (match) {
     return match
@@ -205,5 +205,6 @@ export {
   history,
   RouterContext,
   RouterProps,
-  RouterTypes
+  RouterTypes,
+  getMatchReg
 }
