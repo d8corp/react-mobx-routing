@@ -227,4 +227,8 @@ const Test = () => (
   
 If you find a bug, please file an issue on [GitHub](https://github.com/d8corp/react-mobx-routing/issues)  
 [![issues](https://img.shields.io/github/issues-raw/d8corp/react-mobx-routing)](https://github.com/d8corp/react-mobx-routing/issues)    
+> ---
+[![stars](https://img.shields.io/github/stars/d8corp/react-mobx-routing?style=social)](https://github.com/d8corp/react-mobx-routing/stargazers)
+[![watchers](https://img.shields.io/github/watchers/d8corp/react-mobx-routing?style=social)](https://github.com/d8corp/react-mobx-routing/watchers)
+
 
