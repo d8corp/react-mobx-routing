@@ -78,6 +78,7 @@ declare class Router extends Component<RouterProps> {
     componentDidMount(): void;
     componentWillUnmount(): void;
     get children(): any;
+    unmount: boolean;
     show: boolean;
     childRouterCount: number;
     get showOther(): boolean;
