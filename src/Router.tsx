@@ -81,6 +81,7 @@ class Router extends Component<RouterProps> {
   reaction: () => void
 
   componentDidMount () {
+    this.unmount = false
     this.reaction = reaction(() => this.matched, matched => {
       if (matched) {
         this.onShow()
@@ -92,6 +93,10 @@ class Router extends Component<RouterProps> {
     })
   }
   componentWillUnmount () {
+    if (this.show) {
+      this.unmount = true
+      this.onHide()
+    }
     this.reaction()
   }
 
@@ -126,7 +131,8 @@ class Router extends Component<RouterProps> {
     }
   }
 
-  @observable show = this.matched && !this.props.showDelay && !this.props.delay
+  unmount = false
+  @observable show = false
   @observable childRouterCount = 0
 
   @computed get showOther (): boolean {
@@ -173,7 +179,7 @@ class Router extends Component<RouterProps> {
     if (onHide) {
       onHide()
     }
-    if (hideDelay || delay) {
+    if ((hideDelay || delay) && !this.unmount) {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => this.onHidden(), hideDelay || delay)
     } else {

@@ -410,17 +410,18 @@ describe('Router', () => {
   })
   describe('other', () => {
     test('simple', () => {
+      history.push('/')
+
       const div = render(
         <Router>
-          <Router path='/test'>test</Router>
           <Router other>all</Router>
+          <Router path='/'>test</Router>
         </Router>
       )
 
-      history.push('/')
-      expect(div.innerHTML).toBe('all')
-      history.push('/test')
       expect(div.innerHTML).toBe('test')
+      history.push('/test')
+      expect(div.innerHTML).toBe('all')
     })
     test('no one', () => {
       const div = render(
