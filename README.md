@@ -2,10 +2,9 @@
 [![NPM](https://img.shields.io/npm/v/react-mobx-routing.svg)](https://www.npmjs.com/package/react-mobx-routing)
 ![downloads](https://img.shields.io/npm/dm/react-mobx-routing.svg)
 ![license](https://img.shields.io/npm/l/react-mobx-routing)  
-Use `Router` anywhere to show content by URL matching.  
- 
-[React](https://reactjs.org/) v16.3+  
-[Mobx](https://mobx.js.org/) v3+
+This package provides you the browser routing for:  
+- [React](https://reactjs.org/) v16.3+  
+- [Mobx](https://mobx.js.org/) v3+
 ### Installation
 npm
 ```bash
@@ -15,8 +14,9 @@ yarn
 ```bash
 yarn add react-mobx-routing
 ```
-### Using
-The simplest way of using is [Create React App](https://create-react-app.dev/).    
+The simplest way of using is [Create React App](https://create-react-app.dev/).  
+## Router
+Use `Router` anywhere to show content by URL matching.  
 ```typescript jsx
 import Router, {history} from 'react-mobx-routing'
 
@@ -38,7 +38,6 @@ const App = () => (
 )
 ```
 The `history` is [mobx-history-api](https://github.com/d8corp/mobx-history-api).
-## Props
 ### path ![string](https://img.shields.io/badge/-string-green)
 Use `path` to show router content by URL path
 ```typescript jsx
@@ -226,6 +225,104 @@ const Test = () => (
   </Router>
 )
 ```
+## Redirect
+Use the component for comfortable redirection
+```javascript
+import {Redirect} from 'react-mobx-routing'
+```
+### url ![string](https://img.shields.io/badge/-string-green)
+Use the prop to redirect at the url.
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect url='/' />
+)
+
+const RedirectToLogin = () => (
+  <Redirect url='?modal=login' />
+)
+
+const RedirectToHeader = () => (
+  <Redirect url='#root' />
+)
+
+const RedirectToRepo = () => (
+  <Redirect url='https://github.com/d8corp/react-mobx-routing' />
+)
+```
+### path ![string](https://img.shields.io/badge/-string-green)
+The same as `url` but works only with path.
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect path='/' />
+)
+```
+You may combine with `url`
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect url='/foo#bar' path='/' />
+)
+// redirects to /#bar
+```
+### search ![string](https://img.shields.io/badge/-string-green) ![object](https://img.shields.io/badge/-object-orange)
+The same as `path` but works with search and you may combine with `url`
+```typescript jsx
+const RedirectToLoginModal = () => (
+  <Redirect search='modal=login' />
+)
+// redirects to ?modal=login
+```
+You may use an object of search keys and values
+```typescript jsx
+const RedirectToLoginModal = () => (
+  <Redirect search={{modal: 'login'}} />
+)
+// redirects to ?modal=login
+```
+`undefined` value removes the key
+```typescript jsx
+history.push('/test?key=value')
+
+render (
+  <Redirect search={{key: undefined}} />
+)
+// redirects to /test
+```
+### hash ![string](https://img.shields.io/badge/-string-green)
+The same as `path` but works with hash and you may combine with `url`
+```typescript jsx
+const RedirectToRoot = () => (
+  <Redirect hash='root' />
+)
+// redirects to #root
+```
+### push ![boolean](https://img.shields.io/badge/-boolean-orange)
+By default `Redirect` replaces url. If you wanna push the redirection to history use the property.
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect path='/' push />
+)
+```
+### position ![number](https://img.shields.io/badge/-number-blue) ![string](https://img.shields.io/badge/-string-green)
+By default the page scrolls up during redirection. You may change the scroll position by the property.
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect path='/' position={60} />
+)
+```
+You may scroll to any element by selector query
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect path='/' position='#root' />
+)
+```
+### scrollFirst ![boolean](https://img.shields.io/badge/-boolean-orange)
+When you use smooth scroll you can wait while the scrolling finished and then make the redirection.
+```typescript jsx
+const RedirectToHome = () => (
+  <Redirect path='/' scrollFirst />
+)
+```
+
 ## Issues
   
 If you find a bug, please file an issue on [GitHub](https://github.com/d8corp/react-mobx-routing/issues)  
