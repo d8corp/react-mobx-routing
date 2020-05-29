@@ -8,7 +8,7 @@ const history = new History()
 
 const RouterContext = createContext<Router>(null)
 
-type RouterProps = {
+interface RouterProps {
   match?: string
   path?: string
   search?: string
@@ -27,7 +27,7 @@ type RouterProps = {
   onHidden?: () => void
   children?: ((get: (id?: number, defaultValue?: string) => string) => ReactNode) | ReactNode
 }
-const RouterTypes = {
+const RouterPropTypes = {
   match: PropTypes.string,
   path: PropTypes.string,
   search: PropTypes.string,
@@ -50,6 +50,17 @@ const RouterTypes = {
   ])
 }
 
+const RouterDefaultProps = {
+  match: '',
+  path: '',
+  search: '',
+  hash: '',
+  ish: false,
+  pathIsh: false,
+  searchIsh: false,
+  hashIsh: false
+}
+
 function getMatchReg (props: RouterProps) {
   const {match} = props
   if (match) {
@@ -64,17 +75,8 @@ function getMatchReg (props: RouterProps) {
 
 @observer
 class Router extends Component<RouterProps> {
-  static propTypes = RouterTypes
-  static defaultProps = {
-    match: '',
-    path: '',
-    search: '',
-    hash: '',
-    ish: false,
-    pathIsh: false,
-    searchIsh: false,
-    hashIsh: false
-  }
+  static propTypes = RouterPropTypes
+  static defaultProps = RouterDefaultProps
   static contextType = RouterContext
 
   timer: any
@@ -211,6 +213,7 @@ export {
   history,
   RouterContext,
   RouterProps,
-  RouterTypes,
+  RouterDefaultProps,
+  RouterPropTypes,
   getMatchReg
 }
