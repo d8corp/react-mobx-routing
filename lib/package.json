@@ -1,6 +1,6 @@
 {
   "name": "react-mobx-routing",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Browser History API with Mobx and React",
   "main": "index.js",
   "module": "index.es6.js",
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/d8corp/react-mobx-routing",
   "dependencies": {
     "mobx": ">=3",
-    "mobx-history-api": "^1.0.4",
+    "mobx-history-api": "^1.0.9",
     "mobx-react": ">=4",
     "prop-types": ">=15",
     "react": ">=16.3",

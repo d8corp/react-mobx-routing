@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import History from 'mobx-history-api';
 declare const history: History;
 declare const RouterContext: React.Context<Router>;
-declare type RouterProps = {
+interface RouterProps {
     match?: string;
     path?: string;
     search?: string;
@@ -21,8 +21,8 @@ declare type RouterProps = {
     onHide?: () => void;
     onHidden?: () => void;
     children?: ((get: (id?: number, defaultValue?: string) => string) => ReactNode) | ReactNode;
-};
-declare const RouterTypes: {
+}
+declare const RouterPropTypes: {
     match: PropTypes.Requireable<string>;
     path: PropTypes.Requireable<string>;
     search: PropTypes.Requireable<string>;
@@ -40,6 +40,16 @@ declare const RouterTypes: {
     onHide: PropTypes.Requireable<(...args: any[]) => any>;
     onHidden: PropTypes.Requireable<(...args: any[]) => any>;
     children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+};
+declare const RouterDefaultProps: {
+    match: string;
+    path: string;
+    search: string;
+    hash: string;
+    ish: boolean;
+    pathIsh: boolean;
+    searchIsh: boolean;
+    hashIsh: boolean;
 };
 declare function getMatchReg(props: RouterProps): string;
 declare class Router extends Component<RouterProps> {
@@ -92,4 +102,4 @@ declare class Router extends Component<RouterProps> {
 }
 export default Router;
 export * from 'mobx-history-api';
-export { history, RouterContext, RouterProps, RouterTypes, getMatchReg };
+export { history, RouterContext, RouterProps, RouterDefaultProps, RouterPropTypes, getMatchReg };
