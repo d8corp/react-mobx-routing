@@ -1,7 +1,7 @@
 # react-mobx-routing
-[![NPM](https://img.shields.io/npm/v/react-mobx-routing.svg)](https://www.npmjs.com/package/react-mobx-routing)
-![downloads](https://img.shields.io/npm/dm/react-mobx-routing.svg)
-![license](https://img.shields.io/npm/l/react-mobx-routing)  
+[![NPM](https://img.shields.io/npm/v/react-mobx-routing.svg)](https://github.com/d8corp/react-mobx-routing/blob/master/CHANGELOG.md)
+[![downloads](https://img.shields.io/npm/dm/react-mobx-routing.svg)](https://www.npmjs.com/package/react-mobx-routing)
+[![license](https://img.shields.io/npm/l/react-mobx-routing)](https://github.com/d8corp/react-mobx-routing/blob/master/LICENSE)  
 This package provides you the browser routing for:  
 - [React](https://reactjs.org/) v16.3+  
 - [Mobx](https://mobx.js.org/) v3+
@@ -322,9 +322,11 @@ const RedirectToHome = () => (
   <Redirect path='/' scrollFirst />
 )
 ```
-
-## Issues
-  
+## links
+- [mobx-history-api](https://github.com/d8corp/mobx-history-api) - routing with [Mobx](https://mobx.js.org/) and [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)
+- [package content](https://github.com/d8corp/react-mobx-routing/tree/master/lib)
+- [changelog](https://github.com/d8corp/react-mobx-routing/blob/master/CHANGELOG.md)
+## issues
 If you find a bug, please file an issue on [GitHub](https://github.com/d8corp/react-mobx-routing/issues)  
 [![issues](https://img.shields.io/github/issues-raw/d8corp/react-mobx-routing)](https://github.com/d8corp/react-mobx-routing/issues)    
 > ---
