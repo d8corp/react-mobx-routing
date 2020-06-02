@@ -322,6 +322,82 @@ const RedirectToHome = () => (
   <Redirect path='/' scrollFirst />
 )
 ```
+## Link
+Use the component instance of `a`.  
+If `href` starts from `/` then the `Link` will use History API.  
+`/` is default value of `href`.
+```typescript jsx
+const App = () => (
+  <>
+    <div>
+      <Link>Home</Link>
+      <Link href='/test'>Test</Link>
+    </div>
+    <Router path='/'>Home</Router>
+    <Router path='/test'>Test</Router>
+  </>
+)
+```
+When `href` starts from `?` the `Link` will keep the pathname and change the search and hash.
+```typescript jsx
+const App = () => (
+  <>
+    <div>
+      <Link>Home</Link>
+      <Link href='/test'>Test</Link>
+      <Link href='?modal=test'>Test Modal</Link>
+    </div>
+    <Router path='/'>Home</Router>
+    <Router path='/test'>Test</Router>
+    <Router search='modal=test'><div>Test Modal</div></Router>
+  </>
+)
+```
+When `href` starts from `#` the `Link` will keep the whole URL except for hash.
+### replace ![boolean](https://img.shields.io/badge/-boolean-orange)
+By default `Link` pushes to history but you may use `replace` to replace current history state.
+```typescript jsx
+const Agree = () => (
+  <Link replace href='?'>I agree</Link>
+)
+```
+`href='?'` means clearing of search and hash
+### activeClass ![string](https://img.shields.io/badge/-string-green)
+If you set `activeClass` then the link will have the class if url starts from `href`
+```typescript jsx
+const Test = () => (
+  <Link activeClass='active' href='/test'>test</Link>
+)
+```
+When you click the link html will be equal  
+```html
+<a class="active" href="/test">test</a>
+```
+### exact ![boolean](https://img.shields.io/badge/-boolean-orange)
+By default `activeClass` will be applied when url starts from `href` but use `exact` to compare exactly.
+```typescript jsx
+const Test = () => (
+  <Link activeClass='active' href='/test' exact>test</Link>
+)
+```
+### scrollTo ![number](https://img.shields.io/badge/-number-blue) ![string](https://img.shields.io/badge/-string-green)
+If you wanna scroll the page to custom position (by default it's up of the page) use `scrollTo`
+```typescript jsx
+const To100 = () => (
+  <Link scrollTo={100} href='/test'>test</Link>
+)
+
+const ToRoot = () => (
+  <Link scrollTo='#root' href='/test'>test</Link>
+)
+```
+### scrollFirst ![boolean](https://img.shields.io/badge/-boolean-orange)
+When you use smooth scroll you can wait while the scrolling finished and then make the redirection.
+```typescript jsx
+const Test = () => (
+  <Link scrollFirst href='/test'>test</Link>
+)
+```
 ## links
 - [mobx-history-api](https://github.com/d8corp/mobx-history-api) - routing with [Mobx](https://mobx.js.org/) and [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)
 - [package content](https://github.com/d8corp/react-mobx-routing/tree/master/lib)
