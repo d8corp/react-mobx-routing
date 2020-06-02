@@ -1,6 +1,6 @@
 # Changelog
 ## v1.0 [![27.05.2020](https://img.shields.io/date/1590589020)](https://github.com/d8corp/react-mobx-routing/tree/v1.0)
-### v1.0.7 [![27.05.2020](https://img.shields.io/date/1591130194)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.6)
+### v1.0.7 [![27.05.2020](https://img.shields.io/date/1591130194)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.7)
 - added changelog
 - added `Link`
 ### v1.0.5 [![27.05.2020](https://img.shields.io/date/1590766560)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.5)
