@@ -1,5 +1,6 @@
 import {Component} from 'react'
-import {history, setSearch, parseUrl} from './Router'
+import {history} from './Router'
+import {setSearch, parseUrl} from 'mobx-history-api'
 import PropTypes from 'prop-types'
 
 

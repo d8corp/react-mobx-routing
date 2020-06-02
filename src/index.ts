@@ -1,13 +1,11 @@
-import Redirect from './Redirect'
-import Link from './Link'
-
 export {default} from './Router'
-
 export * from './Router'
-export * from './Redirect'
-export * from './Link'
 
-export {
-  Redirect,
-  Link
-}
+export {default as History} from 'mobx-history-api'
+export * from 'mobx-history-api'
+
+export {default as Redirect} from './Redirect'
+export * from './Redirect'
+
+export {default as Link} from './Link'
+export * from './Link'

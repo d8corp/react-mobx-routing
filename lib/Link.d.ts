@@ -28,4 +28,4 @@ declare class Link<P extends LinkProps = LinkProps, C = any> extends Component<L
     render(): JSX.Element;
 }
 export default Link;
-export { LinkProps, LinkTypes, Link };
+export { LinkProps, LinkTypes };

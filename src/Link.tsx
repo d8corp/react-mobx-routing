@@ -75,6 +75,5 @@ export default Link
 
 export {
   LinkProps,
-  LinkTypes,
-  Link
+  LinkTypes
 }

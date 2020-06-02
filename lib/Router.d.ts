@@ -101,5 +101,4 @@ declare class Router<P extends RouterProps = RouterProps, C = any> extends Compo
     render(): JSX.Element;
 }
 export default Router;
-export * from 'mobx-history-api';
 export { history, RouterContext, RouterProps, RouterDefaultProps, RouterPropTypes, getMatchReg };

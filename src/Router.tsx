@@ -208,7 +208,7 @@ class Router <P extends RouterProps = RouterProps, C = any> extends Component<P,
 }
 
 export default Router
-export * from 'mobx-history-api'
+
 export {
   history,
   RouterContext,
