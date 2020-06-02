@@ -391,6 +391,12 @@ const ToRoot = () => (
   <Link scrollTo='#root' href='/test'>test</Link>
 )
 ```
+Negative value keep the page on the same scroll position.
+```typescript jsx
+const NoScroll = () => (
+  <Link scrollTo={-1} href='/test'>test</Link>
+)
+```
 ### scrollFirst ![boolean](https://img.shields.io/badge/-boolean-orange)
 When you use smooth scroll you can wait while the scrolling finished and then make the redirection.
 ```typescript jsx
