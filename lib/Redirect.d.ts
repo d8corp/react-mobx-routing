@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 interface RedirectData {
     path: string;
     search: string;
@@ -22,7 +22,9 @@ interface RedirectProps {
 declare const RedirectTypes: {
     url: PropTypes.Requireable<string>;
     path: PropTypes.Requireable<string>;
-    search: PropTypes.Requireable<string | object>;
+    search: PropTypes.Requireable<string | {
+        [x: string]: string;
+    }>;
     hash: PropTypes.Requireable<string>;
     push: PropTypes.Requireable<boolean>;
     scrollFirst: PropTypes.Requireable<boolean>;
@@ -33,12 +35,14 @@ declare const RedirectDefaultProp: {
     path: string;
     hash: string;
 };
-declare class Redirect extends Component<RedirectProps> {
+declare class Redirect<P extends RedirectProps = RedirectProps, C = any> extends Component<P, C> {
     static data: RedirectData;
     static propTypes: {
         url: PropTypes.Requireable<string>;
         path: PropTypes.Requireable<string>;
-        search: PropTypes.Requireable<string | object>;
+        search: PropTypes.Requireable<string | {
+            [x: string]: string;
+        }>;
         hash: PropTypes.Requireable<string>;
         push: PropTypes.Requireable<boolean>;
         scrollFirst: PropTypes.Requireable<boolean>;

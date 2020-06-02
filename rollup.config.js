@@ -5,6 +5,7 @@ const def = {
   input: {
     index: 'src/index.ts',
     Router: 'src/Router.tsx',
+    Link: 'src/Link.tsx',
     Redirect: 'src/Redirect.ts',
   },
   external: [

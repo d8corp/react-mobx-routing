@@ -2,7 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import History from 'mobx-history-api';
 declare const history: History;
-declare const RouterContext: React.Context<Router>;
+declare const RouterContext: React.Context<Router<RouterProps, any>>;
 interface RouterProps {
     match?: string;
     path?: string;
@@ -52,7 +52,7 @@ declare const RouterDefaultProps: {
     hashIsh: boolean;
 };
 declare function getMatchReg(props: RouterProps): string;
-declare class Router extends Component<RouterProps> {
+declare class Router<P extends RouterProps = RouterProps, C = any> extends Component<P, C> {
     static propTypes: {
         match: PropTypes.Requireable<string>;
         path: PropTypes.Requireable<string>;
@@ -82,7 +82,7 @@ declare class Router extends Component<RouterProps> {
         searchIsh: boolean;
         hashIsh: boolean;
     };
-    static contextType: React.Context<Router>;
+    static contextType: React.Context<Router<RouterProps, any>>;
     timer: any;
     reaction: () => void;
     componentDidMount(): void;
