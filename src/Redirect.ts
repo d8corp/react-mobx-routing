@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import {history, setSearch, parseUrl} from './Router'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
 
 interface RedirectData {
@@ -26,7 +26,7 @@ const RedirectTypes = {
   url: PropTypes.string,
   path: PropTypes.string,
   search: PropTypes.oneOfType([
-    PropTypes.object,
+    PropTypes.objectOf(PropTypes.string),
     PropTypes.string
   ]),
   hash: PropTypes.string,
@@ -44,7 +44,7 @@ const RedirectDefaultProp = {
   hash: ''
 }
 
-class Redirect extends Component<RedirectProps> {
+class Redirect <P extends RedirectProps = RedirectProps, C = any> extends Component <P, C> {
   static data: RedirectData
   static propTypes = RedirectTypes
   static defaultProps = RedirectDefaultProp
@@ -93,6 +93,7 @@ class Redirect extends Component<RedirectProps> {
     if (typeof search === 'object') {
       for (const key in search) {
         const value = search[key]
+        // @ts-ignore
         data.search = setSearch(data.search, key, value)
       }
     } else if (search) {

@@ -74,7 +74,7 @@ function getMatchReg (props: RouterProps) {
 }
 
 @observer
-class Router extends Component<RouterProps> {
+class Router <P extends RouterProps = RouterProps, C = any> extends Component<P, C> {
   static propTypes = RouterPropTypes
   static defaultProps = RouterDefaultProps
   static contextType = RouterContext
