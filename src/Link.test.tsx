@@ -9,12 +9,12 @@ describe('Link', () => {
   test('simple', () => {
     const link = shallow(<Link />)
 
-    expect(link.html()).toBe('<a></a>')
+    expect(link.html()).toBe('<a href="/"></a>')
   })
   test('child', () => {
     const link = shallow(<Link>test</Link>)
 
-    expect(link.html()).toBe('<a>test</a>')
+    expect(link.html()).toBe('<a href="/">test</a>')
   })
   test('child and href', () => {
     const link = shallow(<Link href='/test'>test</Link>)
@@ -84,5 +84,10 @@ describe('Link', () => {
 
     link.simulate('click')
     expect(history.state.steps.length).toBe(length)
+  })
+  test('external link', () => {
+    const link = shallow(<Link href='https://github.com/d8corp/react-mobx-routing'>test</Link>)
+
+    expect(link.html()).toBe('<a href="https://github.com/d8corp/react-mobx-routing" rel="noreferrer" target="_blank">test</a>')
   })
 })

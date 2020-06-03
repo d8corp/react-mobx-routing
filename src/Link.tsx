@@ -1,4 +1,4 @@
-import React, {AnchorHTMLAttributes, Component} from 'react'
+import React, {AnchorHTMLAttributes, Component, ReactNode} from 'react'
 import {history} from './Router'
 import PropTypes from 'prop-types'
 import {observer} from 'mobx-react'
@@ -10,6 +10,7 @@ interface LinkProps<T = any> extends AnchorHTMLAttributes<T> {
   replace?: boolean
   scrollFirst?: boolean
   scrollTo?: number | string
+  children?: ReactNode
 }
 
 const LinkTypes = {
@@ -17,17 +18,22 @@ const LinkTypes = {
   exact: PropTypes.bool,
   replace: PropTypes.bool,
   scrollFirst: PropTypes.bool,
+  children: PropTypes.node,
   scrollTo: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),
 }
+const LinkDefaultProps = {
+  href: '/',
+}
 
 @observer
 class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProps, C> {
   static propTypes = LinkTypes
+  static defaultProps = LinkDefaultProps
   @action onClick (e) {
-    const {href = '/', scrollTo, scrollFirst, replace} = this.props
+    const {href, scrollTo, scrollFirst, replace} = this.props
     let url = href
     if (href.startsWith('?')) {
       url = history.path + (href === '?' ? '' : href)
@@ -42,6 +48,9 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
       this.props.onClick(e)
     }
   }
+  get isLocal (): boolean {
+    return /^[#?\/]/.test(this.props.href)
+  }
   get isActive (): boolean {
     const {href = '/'} = this.props
     let prefix = ''
@@ -54,7 +63,7 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
     }
     return history.is(`^${prefix}${this.props.href}${this.props.exact ? '$' : ''}`)
   }
-  get className () {
+  get className (): string {
     let {className, activeClass} = this.props
     if (activeClass && this.isActive) {
       if (className) {
@@ -66,8 +75,25 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
     return className
   }
   render () {
-    const {activeClass, exact, scrollTo, scrollFirst, replace, ...props} = this.props
-    return <a {...props} onClick={e => this.onClick(e)} className={this.className} />
+    const {isLocal} = this
+    const {
+      activeClass,
+      exact,
+      scrollTo,
+      scrollFirst,
+      replace,
+      rel = isLocal ? undefined : 'noreferrer',
+      target = isLocal ? undefined : '_blank',
+      ...props
+    } = this.props
+
+    return <a
+      {...props}
+      rel={rel}
+      target={target}
+      onClick={e => this.onClick(e)}
+      className={this.className}
+    />
   }
 }
 
@@ -75,5 +101,6 @@ export default Link
 
 export {
   LinkProps,
+  LinkDefaultProps,
   LinkTypes
 }
