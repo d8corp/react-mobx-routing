@@ -323,7 +323,9 @@ const RedirectToHome = () => (
 )
 ```
 ## Link
-Use the component instance of `a`.  
+Use the component instance of `a`.
+> `rel="noreferrer"` and `target="_blank"` are default for external links.
+### href ![string](https://img.shields.io/badge/-string-green)
 If `href` starts from `/` then the `Link` will use History API.  
 `/` is default value of `href`.
 ```typescript jsx
@@ -353,7 +355,7 @@ const App = () => (
   </>
 )
 ```
-When `href` starts from `#` the `Link` will keep the whole URL except for hash.
+When `href` starts from `#` the `Link` will keep the whole URL except for hash.  
 ### replace ![boolean](https://img.shields.io/badge/-boolean-orange)
 By default `Link` pushes to history but you may use `replace` to replace current history state.
 ```typescript jsx
