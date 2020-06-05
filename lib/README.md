@@ -406,6 +406,13 @@ const Test = () => (
   <Link scrollFirst href='/test'>test</Link>
 )
 ```
+### onMove ![function](https://img.shields.io/badge/function-void-orange)
+If you wanna wait for something before the move by the link then the property for you.
+```typescript jsx
+const Test = () => (
+  <Link href='/test' onMove={move => setTimeout(move, 100)}>test</Link>
+)
+```
 ## links
 - [mobx-history-api](https://github.com/d8corp/mobx-history-api) - routing with [Mobx](https://mobx.js.org/) and [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)
 - [package content](https://github.com/d8corp/react-mobx-routing/tree/master/lib)
