@@ -96,6 +96,7 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
       scrollTo,
       scrollFirst,
       replace,
+      onMove,
       rel = isLocal ? undefined : 'noreferrer',
       target = isLocal ? undefined : '_blank',
       ...props
