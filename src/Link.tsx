@@ -11,6 +11,7 @@ interface LinkProps<T = any> extends AnchorHTMLAttributes<T> {
   scrollFirst?: boolean
   scrollTo?: number | string
   children?: ReactNode
+  onMove?: (move: () => void) => any
 }
 
 const LinkTypes = {
@@ -19,6 +20,7 @@ const LinkTypes = {
   replace: PropTypes.bool,
   scrollFirst: PropTypes.bool,
   children: PropTypes.node,
+  onMove: PropTypes.func,
   scrollTo: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -32,8 +34,20 @@ const LinkDefaultProps = {
 class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProps, C> {
   static propTypes = LinkTypes
   static defaultProps = LinkDefaultProps
-  @action onClick (e) {
-    const {href, scrollTo, scrollFirst, replace} = this.props
+  @action move (url) {
+    const {scrollTo, scrollFirst, replace} = this.props
+    history[replace ? 'replace' : 'push'](url, scrollTo, scrollFirst)
+  }
+  onMove (url: string) {
+    const {onMove} = this.props
+    if (onMove) {
+      onMove(() => this.move(url))
+    } else {
+      this.move(url)
+    }
+  }
+  onClick (e) {
+    const {href} = this.props
     let url = href
     if (href.startsWith('?')) {
       url = history.path + (href === '?' ? '' : href)
@@ -43,7 +57,7 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
       return
     }
     e?.preventDefault()
-    history[replace ? 'replace' : 'push'](url, scrollTo, scrollFirst)
+    this.onMove(url)
     if (this.props.onClick) {
       this.props.onClick(e)
     }

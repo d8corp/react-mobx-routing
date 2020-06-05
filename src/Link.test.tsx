@@ -90,4 +90,15 @@ describe('Link', () => {
 
     expect(link.html()).toBe('<a href="https://github.com/d8corp/react-mobx-routing" rel="noreferrer" target="_blank">test</a>')
   })
+  test('onMove', async () => {
+    history.replace('/')
+    const link1 = shallow(<Link href='/test' onMove={move => move()}>test</Link>)
+    const link2 = shallow(<Link href='/' onMove={move => setTimeout(move, 50)}>test</Link>)
+    link1.simulate('click')
+    expect(history.url).toBe('/test')
+    link2.simulate('click')
+    expect(history.url).toBe('/test')
+    await new Promise(resolve => setTimeout(resolve, 50))
+    expect(history.url).toBe('/')
+  })
 })
