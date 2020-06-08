@@ -36,6 +36,7 @@ declare const RedirectDefaultProp: {
     url: string;
     path: string;
     hash: string;
+    children: any;
 };
 declare class Redirect<P extends RedirectProps = RedirectProps, C = any> extends Component<P, C> {
     static data: RedirectData;
@@ -55,6 +56,7 @@ declare class Redirect<P extends RedirectProps = RedirectProps, C = any> extends
         url: string;
         path: string;
         hash: string;
+        children: any;
     };
     static redirect(): void;
     componentDidMount(): void;

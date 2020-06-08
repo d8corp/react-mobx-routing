@@ -44,7 +44,8 @@ const RedirectTypes = {
 const RedirectDefaultProp = {
   url: '',
   path: '',
-  hash: ''
+  hash: '',
+  children: null
 }
 
 class Redirect <P extends RedirectProps = RedirectProps, C = any> extends Component <P, C> {
@@ -73,6 +74,7 @@ class Redirect <P extends RedirectProps = RedirectProps, C = any> extends Compon
     let {url, path, search, hash, push, position, scrollFirst} = this.props
     if (url.startsWith('http')) {
       location.href = url
+      return
     }
 
     const {data = {path: '', search: '', hash: '', position: 0, push: false, scrollFirst: false}} = Redirect
