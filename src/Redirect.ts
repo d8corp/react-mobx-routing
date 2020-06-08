@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component, ReactNode} from 'react'
 import {history} from './Router'
 import {setSearch, parseUrl} from 'mobx-history-api'
 import PropTypes from 'prop-types'
@@ -21,6 +21,7 @@ interface RedirectProps {
   push?: boolean
   scrollFirst?: boolean
   position?: string | number
+  children?: ReactNode
 }
 
 const RedirectTypes = {
@@ -33,6 +34,7 @@ const RedirectTypes = {
   hash: PropTypes.string,
   push: PropTypes.bool,
   scrollFirst: PropTypes.bool,
+  children: PropTypes.node,
   position: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
@@ -118,7 +120,7 @@ class Redirect <P extends RedirectProps = RedirectProps, C = any> extends Compon
 
   render () {
     Redirect.data = this.data
-    return null
+    return this.props.children
   }
 }
 
