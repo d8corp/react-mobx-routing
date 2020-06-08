@@ -1,6 +1,8 @@
 # Changelog
 ## v1.0 [![27.05.2020](https://img.shields.io/date/1590589020)](https://github.com/d8corp/react-mobx-routing/tree/v1.0)
 
+### v1.0.12 [![05.06.2020](https://img.shields.io/date/1591629539)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.12)
+- keep locale in `href` for `Link`
 ### v1.0.11 [![05.06.2020](https://img.shields.io/date/1591360741)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.11)
 - removed `onMove` from the html element of `Link`
 ### v1.0.10 [![05.06.2020](https://img.shields.io/date/1591349379)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.10)

@@ -96,14 +96,18 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
       scrollTo,
       scrollFirst,
       replace,
+      href,
       onMove,
       rel = isLocal ? undefined : 'noreferrer',
       target = isLocal ? undefined : '_blank',
       ...props
     } = this.props
 
+    const {locale} = history
+
     return <a
       {...props}
+      href={!this.isLocal || !locale ? href : href === '/' ? `/${locale}` : `/${locale}${href}`}
       rel={rel}
       target={target}
       onClick={e => this.onClick(e)}

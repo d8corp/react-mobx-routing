@@ -90,6 +90,16 @@ describe('Link', () => {
 
     expect(link.html()).toBe('<a href="https://github.com/d8corp/react-mobx-routing" rel="noreferrer" target="_blank">test</a>')
   })
+  test('locale link', () => {
+    history.locales = 'ru|en'
+    history.push('/test')
+    history.locale = 'ru'
+    expect(history.localUrl).toBe('/ru/test')
+
+    const link = shallow(<Link>test</Link>)
+
+    expect(link.html()).toBe('<a href="/ru">test</a>')
+  })
   test('onMove', async () => {
     history.replace('/')
     const link1 = shallow(<Link href='/test' onMove={move => move()}>test</Link>)
