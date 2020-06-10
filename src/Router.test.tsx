@@ -599,6 +599,7 @@ describe('Router', () => {
   describe('locale', () => {
     test('simple', () => {
       history.push('/')
+      history.locales = 'ru'
       history.locale = 'ru'
 
       const div = render(

@@ -33,36 +33,24 @@ describe('Redirect', () => {
   })
   describe('url', () => {
     test('simple', () => {
-      const {state} = history
-
-      expect(state.steps.length).toBe(1)
-      expect(state.steps[0].url).toBe('/')
+      const {length} = history.state.steps
       expect(history.url).toBe('/')
 
       render(<Redirect url='/test' />)
 
       expect(history.url).toBe('/test')
-
-      expect(state.steps.length).toBe(1)
-      expect(state.steps[0].url).toBe('/')
-
-      expect(history.state.steps.length).toBe(1)
-      expect(history.state.steps[0].url).toBe('/test')
+      expect(history.state.steps.length).toBe(length)
     })
     test('push', () => {
-      const {state} = history
+      const {length} = history.state.steps
 
-      expect(state.steps.length).toBe(1)
-      expect(state.steps[0].url).toBe('/test')
       expect(history.url).toBe('/test')
 
       render(<Redirect url='/' push />)
 
       expect(history.url).toBe('/')
 
-      expect(history.state.steps.length).toBe(2)
-      expect(history.state.steps[0].url).toBe('/test')
-      expect(history.state.steps[1].url).toBe('/')
+      expect(history.state.steps.length).toBe(length + 1)
     })
     test('path', () => {
       expect(history.url).toBe('/')
@@ -85,7 +73,7 @@ describe('Redirect', () => {
 
       render(<Redirect url='?key1=value1&key2=value2#test' search={{key1: undefined, key2: 'value'}} />)
 
-      expect(history.url).toBe('?key2=value#test')
+      expect(history.url).toBe('/?key2=value#test')
     })
     test('hash', () => {
       history.replace('/')
@@ -103,26 +91,42 @@ describe('Redirect', () => {
 
     expect(history.url).toBe('/test2')
   })
-  test('search', () => {
-    history.replace('/')
+  describe('search', () => {
+    test('string', () => {
+      history.replace('/')
 
-    render(<Redirect search='key=value' />)
+      render(<Redirect search='key=value' />)
 
-    expect(history.url).toBe('?key=value')
-  })
-  test('object search', () => {
-    history.replace('/')
+      expect(history.url).toBe('/?key=value')
+    })
+    test('object search', () => {
+      history.replace('/')
 
-    render(<Redirect search={{key1: undefined, key2: 'value'}} />)
+      render(<Redirect search={{key1: undefined, key2: 'value'}} />)
 
-    expect(history.url).toBe('?key2=value')
+      expect(history.url).toBe('/?key2=value')
+    })
+    test('keep path', () => {
+      history.replace('/test')
+
+      render(<Redirect search={{key1: undefined, key2: 'value'}} />)
+
+      expect(history.url).toBe('/test?key2=value')
+    })
+    test('keep path empty', () => {
+      history.replace('/test?modal=login')
+
+      render(<Redirect search={{modal: undefined}} />)
+
+      expect(history.url).toBe('/test')
+    })
   })
   test('hash', () => {
     history.replace('/')
 
     render(<Redirect hash='test2' />)
 
-    expect(history.url).toBe('#test2')
+    expect(history.url).toBe('/#test2')
   })
   describe('combine', () => {
     test('simple', () => {
