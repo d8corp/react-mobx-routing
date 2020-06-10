@@ -1,6 +1,8 @@
 # Changelog
 ## v1.0 [![27.05.2020](https://img.shields.io/date/1590589020)](https://github.com/d8corp/react-mobx-routing/tree/v1.0)
 
+### v1.0.15 [![10.06.2020](https://img.shields.io/date/1591804029)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.15)
+- fixed redirection to home when you remove all search params with `Redirect`
 ### v1.0.14 [![08.06.2020](https://img.shields.io/date/1591631413)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.14)
 - fixed errors related to external url of `Redirect`
 - fixed empty `Redirect` error
