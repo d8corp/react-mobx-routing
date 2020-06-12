@@ -167,9 +167,9 @@ describe('Redirect', () => {
     test('remove add search', () => {
       history.replace('/?test1=value1&test2=value2')
 
-      render(<><Redirect search={{test1: undefined}} /><Redirect search='?test2=value2' /></>)
+      render(<><Redirect search={{test1: undefined}} /><Redirect search='test2=value1' /></>)
 
-      expect(history.url).toBe('/test1#test2')
+      expect(history.url).toBe('/?test2=value1')
     })
   })
   test('Router', () => {
