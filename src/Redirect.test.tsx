@@ -172,25 +172,44 @@ describe('Redirect', () => {
       expect(history.url).toBe('/?test2=value1')
     })
   })
-  test('Router', () => {
-    history.replace('/')
+  describe('redirect from', () => {
+    test('simple', () => {
+      history.replace('/')
 
-    render(
-      <>
-        <Router path='/foo/(1|2)'>
-          {get => <Redirect path={`/bar/${get(1)}`} />}
-        </Router>
-      </>
-    )
+      render(
+        <>
+          <Router path='/foo'>
+            <Redirect path='/bar' />
+          </Router>
+        </>
+      )
 
-    expect(history.url).toBe('/')
+      expect(history.url).toBe('/')
 
-    history.replace('/foo/1')
+      history.replace('/foo')
 
-    expect(history.url).toBe('/bar/1')
+      expect(history.url).toBe('/bar')
+    })
+    test('get value', () => {
+      history.replace('/')
 
-    history.replace('/foo/2')
+      render(
+        <>
+          <Router path='/foo/(1|2)'>
+            {get => <Redirect path={`/bar/${get(1)}`} />}
+          </Router>
+        </>
+      )
 
-    expect(history.url).toBe('/bar/2')
+      expect(history.url).toBe('/')
+
+      history.replace('/foo/1')
+
+      expect(history.url).toBe('/bar/1')
+
+      history.replace('/foo/2')
+
+      expect(history.url).toBe('/bar/2')
+    })
   })
 })
