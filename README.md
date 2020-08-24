@@ -16,9 +16,11 @@ yarn add react-mobx-routing
 ```
 The simplest way of using is [Create React App](https://create-react-app.dev/).  
 ## Router
-Use `Router` anywhere to show content by URL matching.  
+Use `Router` anywhere to show content by URL matching.
 ```typescript jsx
 import Router, {history} from 'react-mobx-routing'
+// or
+// import Router, {history} from 'react-mobx-routing/Router'
 
 const App = () => (
   <div>
