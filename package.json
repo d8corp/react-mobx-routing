@@ -42,6 +42,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.1.0",
+    "lodash": ">=4.17.19",
     "react-dom": "^16.3",
     "rimraf": "^3.0.0",
     "rollup": "^1.29.0",
