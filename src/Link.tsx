@@ -63,7 +63,7 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
     }
   }
   get isLocal (): boolean {
-    return /^[#?\/]/.test(this.props.href)
+    return !this.props.href.startsWith('http')
   }
   get isActive (): boolean {
     const {href = '/'} = this.props
@@ -98,7 +98,7 @@ class Link <P extends LinkProps = LinkProps, C = any> extends Component<LinkProp
       replace,
       href,
       onMove,
-      rel = isLocal ? undefined : 'noreferrer',
+      rel = isLocal ? undefined : 'noopener noreferrer nofollow',
       target = isLocal ? undefined : '_blank',
       ...props
     } = this.props

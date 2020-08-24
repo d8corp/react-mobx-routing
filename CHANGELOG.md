@@ -1,6 +1,9 @@
 # Changelog
 ## v1.0 [![27.05.2020](https://img.shields.io/date/1590589020)](https://github.com/d8corp/react-mobx-routing/tree/v1.0)
 
+### v1.0.16 [![24.08.2020](https://img.shields.io/date/1598262361)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.16)
+- external links start from `http`
+- external links have `rel` attribute equals `noopener noreferrer nofollow` by default
 ### v1.0.15 [![10.06.2020](https://img.shields.io/date/1591804029)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.15)
 - fixed redirection to home when you remove all search params with `Redirect`
 ### v1.0.14 [![08.06.2020](https://img.shields.io/date/1591631413)](https://github.com/d8corp/react-mobx-routing/tree/v1.0.14)

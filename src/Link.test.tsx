@@ -88,7 +88,7 @@ describe('Link', () => {
   test('external link', () => {
     const link = shallow(<Link href='https://github.com/d8corp/react-mobx-routing'>test</Link>)
 
-    expect(link.html()).toBe('<a href="https://github.com/d8corp/react-mobx-routing" rel="noreferrer" target="_blank">test</a>')
+    expect(link.html()).toBe('<a href="https://github.com/d8corp/react-mobx-routing" rel="noopener noreferrer nofollow" target="_blank">test</a>')
   })
   test('locale link', () => {
     history.locales = 'ru|en'
@@ -110,5 +110,11 @@ describe('Link', () => {
     expect(history.url).toBe('/test')
     await new Promise(resolve => setTimeout(resolve, 50))
     expect(history.url).toBe('/')
+  })
+  test('phone', async () => {
+    history.locale = ''
+    history.replace('/')
+    const link = shallow(<Link href='tel:+79998887766'>test</Link>)
+    expect(link.html()).toBe('<a href="tel:+79998887766">test</a>')
   })
 })
